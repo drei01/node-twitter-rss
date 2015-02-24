@@ -1,0 +1,26 @@
+{
+  "name": "twitter-rss",
+  "version": "0.0.1",
+  "description": "Twitter RSS feed",
+  "main": "twitter-rss.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drei01/node-twitter-rss"
+  },
+  "keywords": [
+    "twitter",
+    "rss"
+  ],
+  "author": "drei01",
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/drei01/node-twitter-rss/issues"
+  },
+  "dependencies": {
+    "feed": "~0.2.6",
+    "twit": "~1.1.20"
+  }
+}
