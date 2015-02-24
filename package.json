@@ -1,5 +1,5 @@
 {
-  "name": "twitter-rss",
+  "name": "rss-twitter",
   "version": "0.0.1",
   "description": "Twitter RSS feed",
   "main": "twitter-rss.js",
