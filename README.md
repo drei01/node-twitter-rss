@@ -3,7 +3,11 @@ Twitter RSS feed module for node
 
 ###Usage
 ```
-var twitterRss = require('./twitter-rss')(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_SECRET);
+npm install rss-twitter --save
+```
+
+```
+var twitterRss = require('rss-twitter')(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_SECRET);
 
 twitterRss.feed('Matthew_Reid', function(err, feed){
 	if(err){
