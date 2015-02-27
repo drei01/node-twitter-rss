@@ -46,7 +46,7 @@ module.exports = function(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_TOKEN
 				feed.item({
 				  title:          tweet.text,
 				  link:           'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
-				  description:    parseTweetText(tweet.text),
+				  content:    parseTweetText(tweet.text),
 				  date:           new Date(tweet.created_at)
 				});
 			  }
