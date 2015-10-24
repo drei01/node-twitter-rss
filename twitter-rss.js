@@ -43,7 +43,7 @@ module.exports = function(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_TOKEN
 				  });
 				}
 
-				feed.item({
+				feed.addItem({
 				  title:          tweet.text,
 				  link:           'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
 				  content:    parseTweetText(tweet.text),
