@@ -1,5 +1,6 @@
 var Feed = require('feed'),
   Twit = require('twit'),
+  tweetReparse = require('tweet-reparse'),
   twitter
 
 module.exports = function (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET) {
@@ -27,6 +28,9 @@ module.exports = function (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_T
         for (var i = 0; i < tweets.length; i++) {
           var tweet = tweets[i]
 
+          // mark up links, mentions, usernames, etc.
+          var text = tweetReparse(tweet)
+
           // init new feed on first tweet
           if (feed == null) {
             feed = new Feed({
@@ -46,7 +50,7 @@ module.exports = function (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_T
           feed.addItem({
             title: tweet.text,
             link: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
-            content: tweet.text,
+            content: text,
             date: new Date(tweet.created_at)
           })
         }
@@ -60,13 +64,3 @@ module.exports = function (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_T
   return module
 }
 
-var parseTweetText = function(text) {
-  text = text.replace(/[@]+[A-Za-z0-9-_]+/g, function(u) {
-    var username = u.replace("@","")
-    return u.link("https://twitter.com/"+username);
-  });
-  text = text.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
-    return url.link(url);
-  });
-  return text;
-};
